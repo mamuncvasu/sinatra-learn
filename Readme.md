@@ -79,21 +79,13 @@
     
 ## raw CRUD
 ## Active record/ orm CRUD
+## Attachments
 ## session bind for domain : mamuns.dev
       way 01: run in production mode 
       way 02: set :sessions, :domain => 'mamuns.dev'
 
 ## htpps/ssl with puma 
-## Auto rerun server in development  -- not tested yet
 
-    1)gem install shotgun
-    2)shotgun app.rb  
-    
-    or,
-    1)gem install rerun
-    2)rerun ruby app.rb
-   
-    
 ## Set Production env --ok
 
     way 01 : ruby app.rb -e production | APP_ENV=production ruby app.rb
@@ -104,6 +96,17 @@
       way 01: ruby app.rb -o 0.0.0.0 
       way 02: using app.rb 
             set :bind, '0.0.0.0'
+            
 ##  Run Puma server  in multiple thread
+## Run sinatra with rackup [ Problem :  env always development]
+    1) create : config.ru
+        require './app'
+        run Sinatra::Application
+
+    2) rackup -p 4567 
+    
 ## Middleware [ https://sinatrarb.com/intro.html#rack-middleware ]
+
+## Seerver run kore detach korbo kivabe?
+
 ## Dockerfile for dockerize

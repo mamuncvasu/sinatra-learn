@@ -3,7 +3,7 @@ require 'sinatra'
 # set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
 
 # set :sessions, :domain => 'mamuns.dev' # only session kaj korbe
-
+set :environment, :production
 
 get '/' do
   # 'Hello world!'
@@ -20,10 +20,4 @@ not_found do
 end
 error do
   'Sorry there was a nasty error'
-end
-error 403 do
-  'Access forbidden'
-end
-error 400..510 do
-  'Boom'
 end
