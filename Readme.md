@@ -68,12 +68,32 @@
     'Boom'
   end
 
-## Layouts and templates 
+## Layouts and templates
+      
+      1) in app.rb
+            get '/' do
+              erb :index
+              #erb :index, :layout => :post
+            end
+            
+      2) create default layout: views/layout.erb (like rails layouts)
+          <html><%= yield %></html> 
+            
+      3) Create views file using that template: views/index.erb
+      
+              <img src="/image/1.jpg" class="img-fluid" alt="...">
+              <h1> Welcome to Sinatra </h1>
+      
 ## Htmx integration
 ## Static file directory [ edit : app.rb ] [ default : public]
 
     1) set :public_folder, '/var/www'   # "/var/www" folder
     2) set :public_folder, Proc.new { File.join(root, "static") }  # "static" folder
+    
+## Static file/ Image integration
+    1) create and save image to: public/image/1.jpg
+    2) call that image from UI:
+          <img src="/image/1.jpg" class="img-fluid" alt="...">
     
 ## Tailwind CSS in public folder
     

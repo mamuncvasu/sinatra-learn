@@ -7,12 +7,13 @@ set :environment, :production
 
 get '/' do
   # 'Hello world!'
-  "Hello World - Auto-reloaded!"
+  erb :index
 end
 
 # Layout
 get '/posts' do
-  erb :index, :layout => :post
+  erb :index
+  # erb :index, :layout => :post
 end
 
 not_found do
