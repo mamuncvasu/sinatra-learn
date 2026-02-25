@@ -90,7 +90,7 @@
     1) set :public_folder, '/var/www'   # "/var/www" folder
     2) set :public_folder, Proc.new { File.join(root, "static") }  # "static" folder
     
-## Static file/ Image integration
+## Static file/ Image integration [actual=public/img..., url=/img]
     1) create and save image to: public/image/1.jpg
     2) call that image from UI:
           <img src="/image/1.jpg" class="img-fluid" alt="...">
@@ -127,6 +127,19 @@
     
 ## Middleware [ https://sinatrarb.com/intro.html#rack-middleware ]
 
-## Seerver run kore detach korbo kivabe?
+## Server run kore detach korbo kivabe?
 
 ## Dockerfile for dockerize
+
+    1) create Dockerfile:
+      # Source  : https://hub.docker.com/_/ruby
+      FROM ruby:4.0.1
+      RUN bundle config --global frozen 1
+      WORKDIR /sinatra-app
+      COPY Gemfile Gemfile.lock ./
+      RUN bundle install
+      COPY . .
+      CMD ["ruby", "app.rb", "-e", "production", "-p", "4567"]
+      
+    2) docker build -t sinatra-app .       # image name "sinatra-app"
+    3) docker run --name sinatra-app1 -p 4567:4567 -d sinatra-app:latest  # container name "sinatra-app1"
