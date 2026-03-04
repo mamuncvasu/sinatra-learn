@@ -102,20 +102,20 @@
 
 ## Active record/ orm CRUD
 
-    ### Source  
+   ### Source  
         - [ https://github.com/sinatra-activerecord/sinatra-activerecord ]
         - [ https://www.youtube.com/watch?v=MgEgTu6NnWg ]
     
-    ### Step 01: add dependencies
+   ### Step 01: add dependencies
 
         bundle add sinatra-activerecord rake sqlite3
     
-    ### Step 02: edit app.rb
+   ### Step 02: edit app.rb
 
         require "sinatra/activerecord"
         set :database, {adapter: "sqlite3", database: "foo.sqlite3"}
 
-    ### Step 03:   create Rakefile
+   ### Step 03:   create Rakefile
         
         # Rakefile
         require "sinatra/activerecord/rake"
@@ -126,7 +126,7 @@
         end
         end
         
-    ### Step 04: create migration and tables
+   ### Step 04: create migration and tables
 
     >  bundle exec rake db:create_migration create_users
         
@@ -140,7 +140,7 @@
         
     > bundle exec rake db:migrate
     
-    ### Step 05 : work with ORM and views
+   ### Step 05 : work with ORM and views
 
 
 ## Attachments
