@@ -13,11 +13,13 @@
     
     3) ruby app.rb   or, ruby app.rb -e production
     
+
 ## Enable Sessions [ default : true ] --ok
 
     1) set :sessions, true
     2) enable  :sessions
     
+
 ## Enable Logging  [ default : true ] -- ok 
     
     1) set :logging, true  
@@ -36,6 +38,7 @@
         require 'securerandom'
         set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
     
+
 ## config in 2 ways : set vs enable/disable
       
       way 01 : simple and short
@@ -50,10 +53,12 @@
           set :dump_errors, false
           set :some_custom_option, false
           
+
 ## Enable/Disable attack protection [ session enable korle auto true]
 
     set :protection, :session => true
     
+
 ## Error route
 
   not_found do
@@ -85,7 +90,9 @@
               <img src="/image/1.jpg" class="img-fluid" alt="...">
               <h1> Welcome to Sinatra </h1>
       
+
 ## Htmx integration
+
 ## Static file directory [ edit : app.rb ] [ default : public]
 
     1) set :public_folder, '/var/www'   # "/var/www" folder
@@ -103,7 +110,7 @@
 ## Active record/ orm CRUD
 
    ### Source  
-        - [ https://github.com/sinatra-activerecord/sinatra-activerecord ]
+        - [ https://github.com/sinatra-activerecord/sinatra-activerecord/tree/master/example ]
         - [ https://www.youtube.com/watch?v=MgEgTu6NnWg ]
     
    ### Step 01: add dependencies
@@ -142,6 +149,19 @@
     
    ### Step 05 : work with ORM and views
 
+    > create db/seeds.rd
+            User.create(name: "Mamun Sikder")
+    > bundle exec rake db:seed
+    > add routes in app.rb
+         get '/users' do
+            @users = User.all
+            erb :index
+         end
+    > create : views/index.erb
+            <%= @users.to_json %>
+
+
+
 
 ## Attachments
 ## session bind for domain : mamuns.dev
@@ -161,7 +181,9 @@
       way 02: using app.rb 
             set :bind, '0.0.0.0'
             
+
 ##  Run Puma server  in multiple thread
+
 ## Run sinatra with rackup [ Problem :  env always development]
     1) create : config.ru
         require './app'
@@ -169,6 +191,7 @@
 
     2) rackup -p 4567 
     
+
 ## Middleware [ https://sinatrarb.com/intro.html#rack-middleware ]
 
 ## Server run kore detach korbo kivabe?
@@ -187,3 +210,34 @@
       
     2) docker build -t sinatra-app .       # image name "sinatra-app"
     3) docker run --name sinatra-app1 -p 4567:4567 -d sinatra-app:latest  # container name "sinatra-app1"
+
+## Sinatra in modular mode
+
+    > create app.rb
+
+        require 'sinatra'
+        require 'sinatra/activerecord'
+
+        class User < ActiveRecord::Base
+        end
+
+        class App < Sinatra::Base
+          before do
+            content_type :json
+          end
+
+          get '/' do
+            p 'Hello!'
+          end
+        end
+
+    > create (config.ru)
+        require './app'
+        run App
+
+    > create Rakefile
+        
+        require './app'
+        require 'sinatra/activerecord/rake'
+
+    > rackup
