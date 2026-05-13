@@ -96,6 +96,18 @@
 
     1) download and save to : public/js/htmx.js
     2) add to layout : <script src="/js/htmx.js"></script>
+    3) get data from api [#list div er moddhe ja thakbe]
+
+                <article>
+                    <div
+                        hx-get="http://localhost:3000/hmx-backend"
+                        hx-select="#list"
+                        hx-trigger="load 1s"
+                        hx-swap="outerHTML"
+                    >
+                        Loading...
+                    </div>
+                </article>
 
 ## Static file directory [ edit : app.rb ] [ default : public]
 
