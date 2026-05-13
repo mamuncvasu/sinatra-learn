@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/reloader'
 # require 'securerandom'
 # set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
 
@@ -10,10 +11,15 @@ get '/' do
   erb :index
 end
 
-# Layout
+# using default layout
 get '/posts' do
   erb :index
   # erb :index, :layout => :post
+end
+
+# using post_layout which use tailwind
+get '/htmx' do
+  erb :index_tailwind, :layout => :post_layout
 end
 
 not_found do

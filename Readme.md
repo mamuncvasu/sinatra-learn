@@ -1,4 +1,4 @@
-# Sinatra Learn in -- Classic not Modular
+# Sinatra Learn in -- Classic and at lat Modular
 
 ## Hello World [ advanced: rerun gem diye auto restart]
 
@@ -12,6 +12,7 @@
           end
     
     3) ruby app.rb   or, ruby app.rb -e production
+        or, 
     
 
 ## Enable Sessions [ default : true ] --ok
@@ -91,20 +92,36 @@
               <h1> Welcome to Sinatra </h1>
       
 
-## Htmx integration
+## Htmx integration  --ok
+
+    1) download and save to : public/js/htmx.js
+    2) add to layout : <script src="/js/htmx.js"></script>
 
 ## Static file directory [ edit : app.rb ] [ default : public]
 
     1) set :public_folder, '/var/www'   # "/var/www" folder
     2) set :public_folder, Proc.new { File.join(root, "static") }  # "static" folder
     
+
 ## Static file/ Image integration [actual=public/img..., url=/img]
     1) create and save image to: public/image/1.jpg
     2) call that image from UI:
           <img src="/image/1.jpg" class="img-fluid" alt="...">
     
-## Tailwind CSS in public folder
+
+## Tailwind CSS in public folder -- ok
+
+    1) download tailwindcli from : [https://github.com/tailwindlabs/tailwindcss/releases/tag/v4.3.0]
+       save to a folder "/home/cvasu/tailwind/tailwindcss-linux-x64"
+    2) make it executable : chmod +x tailwindcss-linux-x64
+    3) create a file in same dir : "/home/cvasu/tailwind/input.css"
+            @import "tailwindcss";
+    4) create main css for sinatra in (<root>/public/css/main.css)
+    5) Link that css to layout : <link rel="stylesheet" href="/css/main.css">
+    6) run tailwind cli for css generate : 
+    npx /home/cvasu/Desktop/tailwind_cli/tailwindcss-linux-x64 -i /home/cvasu/Desktop/tailwind_cli/input.css -o /home/cvasu/Documents/Github/sinatra-learn/public/css/main.css  --watch
     
+
 ## raw CRUD
 
 ## Active record/ orm CRUD

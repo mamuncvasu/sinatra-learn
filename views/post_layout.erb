@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sinatra Post Layout</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Rails Blog">
+    <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- add static css -->
+  <link rel="stylesheet" href="/css/main.css">
+
+
+  </head>
+
+  <body>
+    <main class="container mx-auto mt-28 px-5 flex">
+      <%= yield %>
+    </main>
+  </body>
+
+  <!-- add static htmx -->
+  <script src="/js/htmx.js"></script>
+
+</html>
